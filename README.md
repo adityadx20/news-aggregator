@@ -67,4 +67,4 @@ For this assignment, I chose an in-memory implementation to keep the application
 - API error handling
 - News API caching
 
-**Note:** Since the data is stored in memory, all users and their preferences are cleared when the server is restarted. 
+Note: Since the data is stored in memory, all users and their preferences are cleared when the server is restarted. 

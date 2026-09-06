@@ -19,6 +19,26 @@ module.exports = (users) => {
                 error: 'Name, email, password are required'
             });
         }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({
+                error: 'Invalid email format'
+            });
+        }
+
+        if (password.length < 8) {
+            return res.status(400).json({
+                error: 'Password must be at least 8 characters'
+            });
+        }
+
+        if (preferences !== undefined && !Array.isArray(preferences)) {
+            return res.status(400).json({
+                error: 'Preferences must be an array'
+            });
+        }
     
         const existingUser = users.find((user) => user.email === email);
     
@@ -101,6 +121,12 @@ module.exports = (users) => {
     router.put('/preferences', authenticateToken, (req, res) => {
 
         const { preferences } = req.body;
+
+        if (!Array.isArray(preferences)) {
+            return res.status(400).json({
+                error: 'Preferences must be an array'
+            });
+        }
 
         const user = users.find((user) => user.email === req.user.email);
 

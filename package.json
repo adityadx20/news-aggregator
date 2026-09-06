@@ -25,6 +25,7 @@
         "test": "tap test/*.js --disable-coverage"
     },
     "dependencies": {
+        "axios": "^1.20.0",
         "bcrypt": "^6.0.0",
         "dotenv": "^17.4.2",
         "express": "^4.22.2",
