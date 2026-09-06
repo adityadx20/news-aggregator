@@ -54,7 +54,9 @@ module.exports = (users) => {
             name,
             email,
             password: hashedPassword,
-            preferences: preferences || []
+            preferences: preferences || [],
+            readArticles: [],
+            favoriteArticles: []
         };
     
         users.push(user);
