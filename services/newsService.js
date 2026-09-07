@@ -131,4 +131,28 @@ const fetchNews = async (preferences, newsCache, CACHE_DURATION, GNEWS_KEY) => {
     }
     };
 
-module.exports = { fetchNews, searchNews};
+    const findCachedArticle = (cache, articleId) => {
+
+    for (const cachedData of cache.values()) {
+
+        if (!cachedData || !Array.isArray(cachedData.news)) {
+            continue;
+        }
+
+        const article = cachedData.news.find(
+            (newsArticle) => newsArticle.id === articleId
+        );
+
+        if (article) {
+            return article;
+        }
+    }
+
+    return null;
+    };
+
+module.exports = {
+    fetchNews,
+    searchNews,
+    findCachedArticle
+};
